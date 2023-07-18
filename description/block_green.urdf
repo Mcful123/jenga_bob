@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<robot name="block">
+
+<link name="base_link">
+
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.03 0.1 0.03" />
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.03 0.1 0.03" />
+    </geometry>
+  </visual>
+
+  <inertial>
+   <origin xyz="0 0 0" rpy="0 0 0"/>
+   <mass value="0.003" />
+   <inertia
+      ixx="0.00000379215" ixy="0.0"  ixz="0.0"
+      iyy="0.00000379215" iyz="0.0"  izz="0.00000379215" />
+  </inertial>
+
+</link>
+
+<link name="pick_1">
+  <inertial>
+   <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+   <mass value="0.003" />
+   <inertia
+      ixx="0.00000379215" ixy="0.0"  ixz="0.0"
+      iyy="0.00000379215" iyz="0.0"  izz="0.00000379215" />
+  </inertial>
+</link>
+
+<joint name="pick_1_fixed" type="revolute">
+  <parent link="base_link" />
+  <child link = "pick_1" />
+  <origin xyz="0.0 0.045 0.0" rpy="0.0 0.0 0.0" />
+  <limit effort="50" velocity="50" lower="0" upper="0" />
+</joint>
+
+<link name="pick_2">
+  <inertial>
+   <origin rpy="0.0 0 0" xyz="0.0 0.0 0.0"/>
+   <mass value="0.003" />
+   <inertia
+      ixx="0.00000379215" ixy="0.0"  ixz="0.0"
+      iyy="0.00000379215" iyz="0.0"  izz="0.00000379215" />
+  </inertial>
+</link>
+
+<joint name="pick_2_fixed" type="revolute">
+  <parent link="base_link" />
+  <child link = "pick_2" />
+  <origin xyz="0.0 -0.045 0.0" rpy="0.0 0.0 0.0" />
+  <limit effort="50" velocity="50" lower="0" upper="0" />
+</joint>
+
+<gazebo reference="base_link">
+  <mu1>0.3</mu1>
+  <mu2>0.2</mu2>
+  <kp>2147483647</kp>
+  <kd>1</kd>
+  <maxVel>0</maxVel>
+  <minDepth>0.001</minDepth>
+  <material>Gazebo/Green</material>
+</gazebo>
+
+</robot>
